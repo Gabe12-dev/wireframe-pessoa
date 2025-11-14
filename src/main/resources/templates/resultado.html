@@ -15,14 +15,13 @@
         <p><strong>CPF:</strong> <span th:text="${pessoa.cpf}"></span></p>
         <p><strong>Endereço:</strong> <span th:text="${pessoa.endereco}"></span></p>
 
-        <div class="botoes">
-            <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}" class="btn">Editar</a>
-            <a th:href="@{/pessoas/deletar/{id}(id=${pessoa.id})}" class="btn-excluir">Excluir</a>
+        <div class="painel-acoes">
+            <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}" class="btn editar">Editar</a>
+            <a th:href="@{/pessoas/deletar/{id}(id=${pessoa.id})}" class="btn excluir">Excluir</a>
+            <a href="/pessoas/buscar" class="btn voltar">Nova busca</a>
+            <a href="/pessoas" class="btn voltar">Voltar à lista</a>
         </div>
     </div>
-
-    <a href="/pessoas/buscar" class="btn-voltar">Nova busca</a>
-    <a href="/pessoas" class="btn-voltar">Voltar à lista</a>
 </div>
 
 </body>

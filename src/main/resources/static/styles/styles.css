@@ -252,3 +252,6 @@ footer {
         gap: 10px;
     }
 }
+.botoes .btn.excluir {
+    background: linear-gradient(90deg, #dc3545, #b91c1c);
+}
