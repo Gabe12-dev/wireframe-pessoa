@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar Pessoa</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Buscar Pessoa por CPF</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <form action="/pessoas/buscar/resultado" method="get" class="search-form">
+        <input type="text" name="cpf" placeholder="Digite o CPF" required>
+        <button type="submit" class="btn btn-buscar">🔍 Buscar</button>
+      </form>
+
+      <p th:text="${mensagem}" style="color:red; margin-top:15px;"></p>
+
+      <div th:if="${pessoaEncontrada}" class="painel">
+        <h2>Resultado da busca</h2>
+        <p><strong>Nome:</strong> <span th:text="${pessoaEncontrada.nome}"></span></p>
+        <p><strong>CPF:</strong> <span th:text="${pessoaEncontrada.cpf}"></span></p>
+        <p><strong>Endereço:</strong> <span th:text="${pessoaEncontrada.endereco}"></span></p>
+
+        <div class="painel-acoes">
+          <a th:href="@{/pessoas/editar/{id}(id=${pessoaEncontrada.id})}" class="btn editar">Editar</a>
+          <a th:href="@{/pessoas/deletar/{id}(id=${pessoaEncontrada.id})}" class="btn excluir">Excluir</a>
+          <a href="/pessoas" class="btn voltar">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Projeto Wireframe Pessoa © 2025</p>
+  </footer>
+
+</body>
+</html>

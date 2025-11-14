@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Pessoas</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Lista de Pessoas</h1>
+  </header>
+
+  <main>
+    <div class="acoes-superior">
+      <a href="/pessoas/nova" class="btn novo">➕ Criar Pessoa</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Endereço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="pessoa : ${pessoas}">
+          <td th:text="${pessoa.id}"></td>
+          <td th:text="${pessoa.nome}"></td>
+          <td th:text="${pessoa.cpf}"></td>
+          <td th:text="${pessoa.endereco}"></td>
+          <td>
+            <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}" class="btn editar">Editar</a>
+            <a th:href="@{/pessoas/deletar/{id}(id=${pessoa.id})}" class="btn excluir">Excluir</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="buscar-area">
+      <form action="/pessoas/buscar" method="get">
+        <button type="submit" class="btn-buscar">🔍 Buscar Pessoa</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>Projeto Wireframe Pessoa © 2025</p>
+  </footer>
+
+</body>
+</html>
