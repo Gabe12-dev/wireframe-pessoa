@@ -12,6 +12,24 @@ Projeto de gerenciamento de pessoas que permite cadastrar, listar, buscar, edita
 - Excluir registros
 - Navegação fácil com botões de voltar e nova busca
 - Interface responsiva e clean
+
+
+## Ferramentas Utilizadas
+
+
+- Java & Spring Boot: Backend do sistema, responsável pelo gerenciamento de rotas, CRUD e persistência de dados.
+
+- Thymeleaf: Template engine para gerar páginas HTML dinâmicas a partir do backend.
+
+- HTML5 & CSS3: Estrutura e estilo das páginas do projeto, incluindo layouts modernos e responsivos.
+
+- JavaScript: Funcionalidades interativas, como envio de formulários e atualização de listas em tempo real.
+
+- Git & GitHub: Controle de versão e hospedagem do código.
+
+- VS Code / IntelliJ IDEA: IDEs utilizadas para desenvolvimento e testes.
+
+
 ## Autores
 
 - [@Gabe-12](https://github.com/Gabe12-dev)
