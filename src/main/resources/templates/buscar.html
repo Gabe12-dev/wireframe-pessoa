@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Buscar Pessoa</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
 </head>
 <body>
 
@@ -13,47 +13,32 @@
 
 <main>
 
-    <h2>Digite o Nome para Buscar</h2>
+    <h2>Digite o CPF para Buscar</h2>
 
-    <form action="/pessoas/buscar" method="get" class="search-form">
-        <input type="text" name="nome" placeholder="Nome da pessoa" required>
+    <form th:action="@{/pessoas/buscar}" method="get" class="search-form">
+        <input type="text" name="cpf" placeholder="Ex: 123.456.789-00" required>
         <button type="submit" class="btn btn-buscar">Buscar</button>
     </form>
 
-    <!-- Se existir a variável 'pessoa', mostrar os dados -->
-    <div th:if="${pessoa != null}" class="painel">
-
-        <h2>Resultado</h2>
-
-        <p><strong>ID:</strong> <span th:text="${pessoa.id}"></span></p>
-        <p><strong>Nome:</strong> <span th:text="${pessoa.nome}"></span></p>
-
-        <div class="painel-acoes">
-            <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}" class="btn editar">Editar</a>
-            <a th:href="@{/pessoas/excluir/{id}(id=${pessoa.id})}" class="btn excluir"
-               onclick="return confirm('Tem certeza que deseja excluir?')">
-                Excluir
-            </a>
-
-            <!-- Botão VOLTAR -->
-            <a href="/pessoas" class="btn voltar">Voltar</a>
-        </div>
-
-    </div>
-
-    <!-- Se NÃO achar ninguém -->
-    <div th:if="${mensagem != null}" class="painel">
-        <h2 th:text="${mensagem}"></h2>
-
-        <!-- Botão voltar também quando não encontrar -->
-        <a href="/pessoas" class="btn voltar">Voltar</a>
-    </div>
+    <p id="msgErroCPF" class="msg-erro-cpf"></p>
 
 </main>
 
 <footer>
-    <p>Wireframe Pessoa - Todos os direitos reservados</p>
+    <a th:href="@{/pessoas}" class="btn voltar">Voltar à lista</a>
 </footer>
+
+<script>
+  document.querySelector(".search-form").addEventListener("submit", function(e) {
+    const cpf = document.querySelector("input[name='cpf']").value.trim();
+    if (cpf === "") {
+      e.preventDefault();
+      const msg = document.getElementById("msgErroCPF");
+      msg.style.display = "block";
+      msg.textContent = "Você deve digitar um CPF para buscar.";
+    }
+  });
+</script>
 
 </body>
 </html>

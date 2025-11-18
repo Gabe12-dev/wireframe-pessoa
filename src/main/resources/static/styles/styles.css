@@ -91,7 +91,6 @@ tr:hover {
 /* =========================
    BOTÕES
 ========================= */
-
 .btn {
     display: inline-block;
     padding: 10px 18px;
@@ -104,7 +103,7 @@ tr:hover {
     border: none;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin: 6px; /* espaçamento entre botões */
+    margin: 6px;
 }
 
 .btn:hover {
@@ -112,26 +111,8 @@ tr:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     filter: brightness(1.05);
 }
-/* Botão Voltar */
-.btn.voltar {
-    background: linear-gradient(90deg, #6c757d, #495057);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease-in-out;
-    display: inline-block;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
 
-.btn.voltar:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* cores base */
+/* cores base dos botões */
 .btn {
     background: linear-gradient(90deg, #007bff, #00b4d8);
 }
@@ -149,7 +130,10 @@ tr:hover {
     background: linear-gradient(90deg, #6c757d, #495057);
 }
 
-/* Botão principal de busca — destaque extra */
+.btn.salvar {
+    background: linear-gradient(90deg, #00b894, #00cec9);
+}
+
 .btn-buscar {
     background: linear-gradient(90deg, #00b894, #00cec9);
     padding: 12px 25px;
@@ -238,7 +222,7 @@ input[type="text"]:focus {
     margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 15px; /* mais espaço entre os botões editar/excluir/voltar */
+    gap: 15px;
 }
 
 /* =========================
@@ -270,7 +254,4 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
-}
-.botoes .btn.excluir {
-    background: linear-gradient(90deg, #dc3545, #b91c1c);
 }

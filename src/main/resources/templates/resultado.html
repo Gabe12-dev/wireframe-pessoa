@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultado da Busca</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
 </head>
 <body>
 
-<div class="container">
+<header>
     <h1>Resultado da Busca</h1>
+</header>
 
-    <div class="painel" th:if="${pessoa}">
+<main>
+    <div class="painel" th:if="${pessoa != null}">
         <p><strong>Nome:</strong> <span th:text="${pessoa.nome}"></span></p>
         <p><strong>CPF:</strong> <span th:text="${pessoa.cpf}"></span></p>
         <p><strong>Endereço:</strong> <span th:text="${pessoa.endereco}"></span></p>
@@ -18,11 +20,23 @@
         <div class="painel-acoes">
             <a th:href="@{/pessoas/editar/{id}(id=${pessoa.id})}" class="btn editar">Editar</a>
             <a th:href="@{/pessoas/deletar/{id}(id=${pessoa.id})}" class="btn excluir">Excluir</a>
-            <a href="/pessoas/buscar" class="btn voltar">Nova busca</a>
-            <a href="/pessoas" class="btn voltar">Voltar à lista</a>
+            <a th:href="@{/pessoas/buscar}" class="btn voltar">Nova Busca</a>
+            <a th:href="@{/pessoas}" class="btn voltar">Voltar à Lista</a>
         </div>
     </div>
-</div>
+
+    <div class="painel" th:if="${pessoa == null}">
+        <h2>Pessoa não encontrada.</h2>
+        <div class="painel-acoes">
+            <a th:href="@{/pessoas/buscar}" class="btn voltar">Nova Busca</a>
+            <a th:href="@{/pessoas}" class="btn voltar">Voltar à Lista</a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Projeto Wireframe Pessoa © 2025</p>
+</footer>
 
 </body>
 </html>
