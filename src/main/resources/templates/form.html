@@ -20,7 +20,8 @@
     <input type="text" th:field="*{nome}" placeholder="Ex: João Silva" required>
 
     <label for="cpf">CPF:</label>
-    <input type="text" th:field="*{cpf}" placeholder="Ex: 123.456.789-00" required>
+    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
+
 
     <label for="endereco">Endereço:</label>
     <input type="text" th:field="*{endereco}" placeholder="Ex: Rua das Flores, 123" required>
@@ -35,6 +36,29 @@
 <footer>
   <p>Projeto Wireframe Pessoa © 2025</p>
 </footer>
+
+<script>
+const cpfInput = document.getElementById("cpf");
+
+cpfInput.addEventListener("input", function(e) {
+    let value = cpfInput.value;
+
+    // Remove qualquer caractere que não seja número
+    value = value.replace(/\D/g, "");
+
+    // Aplica a máscara: 000.000.000-00
+    if (value.length > 3 && value.length <= 6) {
+        value = value.replace(/(\d{3})(\d+)/, "$1.$2");
+    } else if (value.length > 6 && value.length <= 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+    } else if (value.length > 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, "$1.$2.$3-$4");
+    }
+
+    cpfInput.value = value;
+});
+</script>
+
 
 </body>
 </html>
